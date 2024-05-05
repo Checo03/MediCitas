@@ -6,13 +6,22 @@ import { Doctor } from '../doctor';
 import { DoctorService } from '../shared/doctor.service';
 import { PacientesService } from '../shared/pacientes.service';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 @Component({
   selector: 'app-agendar',
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule],
+  providers: [provideNativeDateAdapter()],
+  imports: [RouterModule, FormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, NgxMaterialTimepickerModule],
   templateUrl: './agendar.component.html',
   styleUrl: './agendar.component.css'
 })
+
+
 export class AgendarComponent {
   @Input() doctor!: Doctor;
   paciente!: any;
@@ -20,11 +29,22 @@ export class AgendarComponent {
   telefonoPaciente: string = '';
   fechaCita: string = '';
   horaCita: string = '';
+  minDate: Date;
+  maxDate: Date;
 
   constructor(public doctorService: DoctorService, public activatedRoute: ActivatedRoute, private pacientesService: PacientesService) {
     this.activatedRoute.params.subscribe(params => {
       this.doctor = doctorService.getUnDoctor(params['id']);
     })
+
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1); 
+    tomorrow.setHours(0, 0, 0, 0);
+    const nextYear = new Date(today.getFullYear() + 1, 11, 31); 
+
+    this.minDate = tomorrow; 
+    this.maxDate = nextYear; 
   }
 
   guardarCita(): void {
@@ -62,4 +82,5 @@ export class AgendarComponent {
       
     }
   }
+ 
 }

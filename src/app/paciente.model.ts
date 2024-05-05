@@ -4,7 +4,4 @@ export interface Paciente {
     telefeno:string;
     fecha:string;
     hora:string;
-    
-    
-
 }
