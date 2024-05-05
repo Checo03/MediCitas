@@ -8,7 +8,18 @@ export class PacientesService {
   agregarCita(cita: any): void {
     let citas: any[] = this.obtenerCitas() || [];
     citas.push(cita);
-    localStorage.setItem('citas', JSON.stringify(citas));
+    const citasToSave = citas.map(cita => {
+      if (cita.fechaCita instanceof Date) {
+        return {
+          ...cita,
+          fechaCita: cita.fechaCita.toLocaleDateString() 
+        };
+      } else {
+        return cita;
+      }
+    });
+    localStorage.setItem('citas', JSON.stringify(citasToSave));
+    
   }
 
   obtenerCitas(): any[] {
