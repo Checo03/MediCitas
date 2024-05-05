@@ -1,0 +1,57 @@
+
+<div class="row animated fadeIn fast">
+    <div class="col md-4 text-center">
+        <h1 [ngStyle]="{'color': 'darkblue', 'font-size': '26px', 'margin-bottom': '10px'}">Foto del doctor seleccionado</h1>
+        <img width="300px" [src]="doctor.img" alt="..." class="img-fluid">
+        <br><br>
+        <a [routerLink]="['/citas']" class="btn btn-outline-danger btn-block">Regresar</a>
+    </div>
+
+    
+    <div class="container mt-5">
+        <div [ngStyle]="{'padding': '20px'}">
+            <h1 [ngStyle]="{'color': 'blue', 'font-size': '24px', 'margin-bottom': '10px'}">Reservacion de citas medicas</h1>
+            <h2 [ngStyle]="{'color': 'green', 'font-size': '20px', 'margin-bottom': '10px'}">Datos del doctor con el que se desea sacar una cita</h2>
+        
+            <div [ngStyle]="{'border': '2px solid blue', 'padding': '10px', 'margin-bottom': '20px'}">
+                <h3>{{ doctor.nombre }}</h3>
+                <hr>
+                <div class="form-group">
+                    <label for="especialidad">Especialidad</label>
+                    <input type="text" class="form-control" id="especialidad" [(ngModel)]="doctor.especialidad" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="cedula">Cedula</label>
+                    <input type="text" class="form-control" id="cedula" [(ngModel)]="doctor.cedula" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="estudios">Estudios</label>
+                    <input type="text" class="form-control" id="estudios" [(ngModel)]="doctor.estudios" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="costo">Costo de la consulta</label>
+                    <input type="text" class="form-control" id="costo" [(ngModel)]="doctor.costo" readonly>
+                </div>
+                <hr>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="nombrePaciente">Nombre del paciente</label>
+            <input type="text" class="form-control" id="nombrePaciente" placeholder="Ingrese el nombre del paciente" [(ngModel)]="nombrePaciente" required>
+        </div>
+        <div class="form-group">
+            <label for="telefonoPaciente">Telefono</label>
+            <input type="tel" class="form-control" id="telefonoPaciente" placeholder="Ingrese el telefono del paciente" [(ngModel)]="telefonoPaciente" required>
+        </div>
+        <div class="form-group">
+            <label for="fechaCita">Fecha de la cita</label>
+            <input type="date" class="form-control" id="fechaCita" [(ngModel)]="fechaCita" required>
+        </div>
+        <div class="form-group">
+            <label for="horaCita">Hora de la cita</label>
+            <input type="time" class="form-control" id="horaCita" [(ngModel)]="horaCita" required>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="guardarCita()">Reservar cita</button>
+    </div>
+</div>
