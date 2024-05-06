@@ -12,6 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-agendar',
   standalone: true,
@@ -48,6 +50,16 @@ export class AgendarComponent {
   }
 
   guardarCita(): void {
+    if (!this.nombrePaciente || !this.telefonoPaciente || !this.fechaCita || !this.horaCita) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor completa todos los campos antes de reservar la cita.",
+      });
+      return; 
+    }
+
+
     // Obtener la fecha de hoy
     const fechaActual = new Date();
     //convertir la fecha seleccionada a objeto Date para manejar la comparacionm
@@ -69,15 +81,30 @@ export class AgendarComponent {
       const citas = this.pacientesService.obtenerCitas();
       if (this.pacientesService.citaExistente(nuevaCita, citas)) { //comprobar que la cita no exista, tanto en fecha como en hora
         console.log("Ya existe una cita para esta fecha y hora.");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Ya existe una cita para esta fecha y hora!",
+        });
         //aqui poner lo de los feedback o mensajes de retroalinentacion
         return;
       }
 
       // Si la cita no existe y la fecha es valida, se registra
       console.log("Cita guardada exitosamente.");
+      Swal.fire({
+        title: "Cita Confirmada!",
+        text: "Esperemos Verlo Pronto!",
+        icon: "success"
+      });
       this.pacientesService.agregarCita(nuevaCita);
     } else {
       console.log("No se puede agendar una cita en fechas pasadas.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se puede agendar una cita en fechas pasadas!",
+      });
       //aqui poner lo de los feedback o mensajes de retroalinentacion
       
     }
