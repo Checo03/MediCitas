@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Casos Positivos</th>
+          <th>Casos Negativos</th>
+          <th>Hospitalizados</th>
+          <th>Muertos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            @for (datos of DatosCovid; track datos;) {
+                <td>{{ datos.date }}</td>
+                <td>{{ datos.positive }}</td>
+                <td>{{ datos.negative }}</td>
+                <td>{{ datos.hospitalized }}</td>
+                <td>{{ datos.death }}</td>
+            }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
