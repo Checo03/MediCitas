@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PacientesService } from '../shared/pacientes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reportes',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './reportes.component.html',
   styleUrl: './reportes.component.css'
 })

@@ -21,7 +21,7 @@
             <tr>
               <td>{{ cita.nombrePaciente }}</td>
               <td>{{ cita.telefonoPaciente }}</td>
-              <td>{{ cita.fechaCita }}</td>
+              <td>{{ cita.fechaCita | date:'dd/MM/yyyy' }}</td>
               <td>{{ cita.horaCita }}</td>
               <td>{{ cita.doctor.nombre }}</td>
               <td>{{ cita.doctor.especialidad }}</td>

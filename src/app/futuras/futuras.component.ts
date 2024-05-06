@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { PacientesService } from '../shared/pacientes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-futuras',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './futuras.component.html',
   styleUrl: './futuras.component.css'
 })
@@ -17,12 +18,10 @@ export class FuturasComponent {
 
   obtenerCitasFuturas(): void {
     const citas = this.pacientesService.obtenerCitas();
+    const fechaActual = new Date(); // Obtener la fecha actual como objeto Date
 
-    //igual que en las cityas pasadas se obtiene la fecha actual
-    const fechaActual = new Date().toISOString().split('T')[0];
-
-    //se seleccionan las fechas posteriores o iguales a la fecha actual
-    this.citasFuturas = citas.filter(cita => cita.fechaCita >= fechaActual);
+    // Filtrar las citas futuras
+    this.citasFuturas = citas.filter(cita => new Date(cita.fechaCita) >= fechaActual);
   }
 
 }
