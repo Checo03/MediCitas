@@ -6,3 +6,9 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+.Container-Covid{
+    margin-top: 40px;
+    margin: 0 auto;
+    width: 80%;
+}

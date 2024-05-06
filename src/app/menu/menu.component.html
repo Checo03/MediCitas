@@ -35,8 +35,8 @@
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Buscas Un Doctor?" aria-label="Buscar Doctor">
-              <button class="btn btn-outline-dark" type="submit">Buscar</button>
+              <input class="form-control me-2" type="search" placeholder="Buscas Un Doctor?" aria-label="Buscar Doctor" #buscarTexto (keyup.enter)="buscarDoctor(buscarTexto.value)">
+              <button class="btn btn-outline-dark" type="submit" (click)="buscarDoctor(buscarTexto.value)">Buscar</button>
             </form>
             <div class="separacion"></div>
           </div>
