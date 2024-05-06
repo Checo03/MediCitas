@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CovidTablaComponent } from './covid-tabla.component';
+import { VideoComponent } from './video.component';
 
-describe('CovidTablaComponent', () => {
-  let component: CovidTablaComponent;
-  let fixture: ComponentFixture<CovidTablaComponent>;
+describe('VideoComponent', () => {
+  let component: VideoComponent;
+  let fixture: ComponentFixture<VideoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CovidTablaComponent]
+      imports: [VideoComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CovidTablaComponent);
+    fixture = TestBed.createComponent(VideoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
