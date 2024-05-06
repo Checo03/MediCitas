@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { PacientesService } from '../shared/pacientes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pasadas',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pasadas.component.html',
   styleUrl: './pasadas.component.css'
 })
@@ -17,8 +18,10 @@ export class PasadasComponent {
 
   obtenerCitasPasadas(): void {
     const citas = this.pacientesService.obtenerCitas();
-    const fechaActual = new Date().toISOString().split('T')[0]; //obtener la fecha actual
-    this.citasPasadas = citas.filter(cita => cita.fechaCita < fechaActual); //seleccionar las citas de las fechas q ya pasaron
+    const fechaActual = new Date(); // Obtener la fecha actual como objeto Date
+
+    // Filtrar las citas pasadas
+    this.citasPasadas = citas.filter(cita => new Date(cita.fechaCita) < fechaActual);
   }
 
 }
