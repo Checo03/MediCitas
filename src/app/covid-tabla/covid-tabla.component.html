@@ -1,4 +1,5 @@
-<div class="container">
+@if(array.lenght != 0){
+  <div class="container">
     <table class="table">
       <thead>
         <tr>
@@ -11,16 +12,18 @@
       </thead>
       <tbody>
         <tr>
-            @for (datos of DatosCovid; track datos;) {
-                <td>{{ datos.date }}</td>
-                <td>{{ datos.positive }}</td>
-                <td>{{ datos.negative }}</td>
-                <td>{{ datos.hospitalized }}</td>
-                <td>{{ datos.death }}</td>
+            @for (i of array; track i) {
+                <td>{{ i.nombre }}</td>
+                <td>{{ i.causas }}</td>
+                <td>{{ i.consecuencias }}</td>
+                <td>{{ i.tratamiento }}</td>
+                <td>{{ i.tasa_mortalidad }}</td>
             }
         </tr>
       </tbody>
     </table>
   </div>
+}
+
 
   

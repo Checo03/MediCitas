@@ -13,5 +13,9 @@ import {MatIconModule} from '@angular/material/icon';
 export class MenuComponent {
 
   constructor(private router:Router) {}
+
+  buscarDoctor(nombre:string){
+    this.router.navigate(['/busqueda', nombre]);
+  }
   
 }
