@@ -3,12 +3,13 @@ import { MostrarCorreoComponent } from '../correo/mostrar-correo/mostrar-correo.
 import { FormularioComponent } from '../correo/formulario/formulario.component';
 import { HttpClient } from '@angular/common/http';
 import { VideoComponent } from '../video/video.component';
+import { EnfermedadComponent } from '../enfermedad/enfermedad.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ MostrarCorreoComponent, FormularioComponent, VideoComponent],
+  imports: [ MostrarCorreoComponent, FormularioComponent, VideoComponent,EnfermedadComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
