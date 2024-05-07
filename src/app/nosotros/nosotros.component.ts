@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-nosotros',
   standalone: true,
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './nosotros.component.html',
   styleUrl: './nosotros.component.css'
 })
+
 export class NosotrosComponent {
 
 }
